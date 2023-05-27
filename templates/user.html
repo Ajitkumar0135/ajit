@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Details</title>
+</head>
+<body>
+    <h1>User Search</h1>
+    <form action="/user" method="POST">
+        <label for="id">Enter User ID:</label>
+        <input type="text" id="id" name="id">
+        <input type="submit" value="Search">
+    </form>
+    <h1>User Details</h1>
+    {% if user %}
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+            </tr>
+            {% for u in user %}
+            <tr>
+                <td>{{ u[0] }}</td>
+                <td>{{ u[1] }}</td>
+                <td>{{ u[2] }}</td>
+                <td>{{ u[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>User not found</p>
+    {% endif %}
+</body>
+</html>
